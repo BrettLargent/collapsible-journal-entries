@@ -1,0 +1,11 @@
+{
+  "name": "collapsible-journal-entries",
+  "title": "Collapsible Journal Entries",
+  "description": "Makes journal entry headers collapsible.",
+  "version": "1.0.0",
+  "author": "blargent",
+  "minimumCoreVersion": "0.7.5",
+  "compatibleCoreVersion": "0.8.8",
+  "scripts": ["./scripts/index.js"],
+  "styles": ["./styles/index.css"]
+}

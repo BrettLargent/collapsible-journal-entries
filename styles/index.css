@@ -1,0 +1,7 @@
+.cje-collapsed {
+  display: none;
+}
+
+.cje-collapsible {
+  cursor: pointer;
+}
