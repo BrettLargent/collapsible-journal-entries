@@ -6,6 +6,9 @@
   "author": "blargent",
   "minimumCoreVersion": "0.7.5",
   "compatibleCoreVersion": "0.8.8",
-  "scripts": ["./scripts/index.js"],
+  "scripts": [
+    "https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js",
+    "./scripts/index.js"
+  ],
   "styles": ["./styles/index.css"]
 }

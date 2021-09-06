@@ -1,7 +1,51 @@
-.cje-collapsed {
+.cje-collapsible {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.cje-collapsible.cje-d-none,
+.cje-d-none {
   display: none;
 }
 
-.cje-collapsible {
-  cursor: pointer;
+.cje-collapsible:hover {
+  color: #782e22;
+}
+
+.cje-collapsible .feather {
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+
+h1.cje-collapsible .feather {
+  width: 20px;
+  height: 20px;
+}
+h2.cje-collapsible .feather {
+  width: 18px;
+  height: 18px;
+}
+h3.cje-collapsible .feather {
+  width: 16px;
+  height: 16px;
+}
+h4.cje-collapsible .feather {
+  width: 14px;
+  height: 20px;
+}
+h5.cje-collapsible .feather {
+  width: 12px;
+  height: 12px;
+}
+h6.cje-collapsible .feather {
+  width: 10px;
+  height: 10px;
+}
+
+.cje-collapsible:not(.cje-collapsed) .feather-plus-circle {
+  display: none;
+}
+.cje-collapsible.cje-collapsed .feather-minus-circle {
+  display: none;
 }
