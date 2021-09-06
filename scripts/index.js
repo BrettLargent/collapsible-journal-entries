@@ -49,11 +49,7 @@ const collectChildElements = (el, selector) => {
   return siblings;
 };
 
-Hooks.on("closeJournalSheet", () => {
-  headerIdMap = {};
-});
-
-Hooks.on("renderJournalSheet", (app, html, data) => {
+const injectCollapsibleHeaders = (app, html, data, renderHeadersCollapsed) => {
   const headers = html.find(".editor").find("h1,h2,h3,h4,h5,h6");
   headers.each(function (idx, html) {
     const id = `cje-${idx}`;
@@ -79,9 +75,90 @@ Hooks.on("renderJournalSheet", (app, html, data) => {
       el,
       childEls,
       _handleClick,
-      isOpen: true, // TODO
+      isOpen: true,
     };
     el.on("click", _handleClick);
+    if (renderHeadersCollapsed) {
+      _handleClick();
+    }
   });
   feather.replace();
+};
+
+Hooks.on("init", () => {
+  let renderJournalSheetHookId = null;
+
+  game.settings.register(
+    "collapsible-journal-entries",
+    "enableCollapsbibleHeaders",
+    {
+      name: "Enable Collapsible Headers",
+      hint: "Choose whether to enable collapsible headers",
+      scope: "client", // This specifies a client-stored setting
+      config: true, // This specifies that the setting appears in the configuration view
+      type: Boolean,
+      choices: {
+        // If choices are defined, the resulting setting will be a select menu
+        true: "Yes",
+        false: "No",
+      },
+      default: true, // The default value for the setting
+      onChange: (value) => {
+        if (value) {
+          renderJournalSheetHookId = Hooks.on(
+            "renderJournalSheet",
+            (app, html, data) => {
+              injectCollapsibleHeaders(app, html, data);
+            }
+          );
+          return;
+        }
+        Hooks.off("renderJournalSheet", renderJournalSheetHookId);
+      },
+    }
+  );
+
+  game.settings.register(
+    "collapsible-journal-entries",
+    "renderHeadersCollapsed",
+    {
+      name: "renderHeadersCollapsed",
+      hint: "Choose whether to render headers collapsed",
+      scope: "client", // This specifies a client-stored setting
+      config: true, // This specifies that the setting appears in the configuration view
+      type: Boolean,
+      choices: {
+        // If choices are defined, the resulting setting will be a select menu
+        true: "Yes",
+        false: "No",
+      },
+      default: false, // The default value for the setting
+    }
+  );
+
+  if (
+    game.settings.get(
+      "collapsible-journal-entries",
+      "enableCollapsbibleHeaders"
+    )
+  ) {
+    renderJournalSheetHookId = Hooks.on(
+      "renderJournalSheet",
+      (app, html, data) => {
+        injectCollapsibleHeaders(
+          app,
+          html,
+          data,
+          game.settings.get(
+            "collapsible-journal-entries",
+            "renderHeadersCollapsed"
+          )
+        );
+      }
+    );
+  }
+
+  Hooks.on("closeJournalSheet", () => {
+    headerIdMap = {};
+  });
 });
