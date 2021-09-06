@@ -5,10 +5,16 @@
   "version": "1.0.0",
   "author": "blargent",
   "minimumCoreVersion": "0.7.5",
-  "compatibleCoreVersion": "0.8.8",
-  "scripts": [
-    "https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js",
-    "./scripts/index.js"
+  "compatibleCoreVersion": "0.8.9",
+  "dependencies": [
+    {
+      "name": "foundry-vtt-feather-icons",
+      "manifest": "https://raw.githubusercontent.com/BrettLargent/foundry-vtt-feather-icons/main/module.json"
+    }
   ],
-  "styles": ["./styles/index.css"]
+  "scripts": ["./scripts/index.js"],
+  "styles": ["./styles/index.css"],
+  "url": "https://github.com/BrettLargent/collapsible-journal-entries",
+  "manifest": "https://raw.githubusercontent.com/BrettLargent/collapsible-journal-entries/main/module.json",
+  "download": "https://github.com/BrettLargent/collapsible-journal-entries/archive/refs/heads/main.zip"
 }
