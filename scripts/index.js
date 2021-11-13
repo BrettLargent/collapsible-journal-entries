@@ -166,7 +166,7 @@ Hooks.on("init", () => {
     "foundry-vtt-collapsible-journal-entry-headers",
     "renderHeadersCollapsed",
     {
-      name: "renderHeadersCollapsed",
+      name: "Render Headers Collapsed",
       hint: "Choose whether to render headers collapsed",
       scope: "client", // This specifies a client-stored setting
       config: true, // This specifies that the setting appears in the configuration view
