@@ -1,8 +1,8 @@
 {
-  "name": "collapsible-journal-entries",
-  "title": "Collapsible Journal Entries",
+  "name": "foundry-vtt-collapsible-journal-entry-headers",
+  "title": "Foundry VTT Collapsible Journal Entry Headers",
   "description": "Makes journal entry headers collapsible.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "blargent",
   "minimumCoreVersion": "0.7.5",
   "compatibleCoreVersion": "0.8.9",
@@ -14,7 +14,7 @@
   ],
   "scripts": ["./scripts/index.js"],
   "styles": ["./styles/index.css"],
-  "url": "https://github.com/BrettLargent/collapsible-journal-entries",
-  "manifest": "https://raw.githubusercontent.com/BrettLargent/collapsible-journal-entries/main/module.json",
-  "download": "https://github.com/BrettLargent/collapsible-journal-entries/archive/refs/heads/main.zip"
+  "url": "https://github.com/BrettLargent/foundry-vtt-collapsible-journal-entry-headers",
+  "manifest": "https://raw.githubusercontent.com/BrettLargent/foundry-vtt-collapsible-journal-entry-headers/main/module.json",
+  "download": "https://github.com/BrettLargent/foundry-vtt-collapsible-journal-entry-headers/archive/refs/heads/main.zip"
 }

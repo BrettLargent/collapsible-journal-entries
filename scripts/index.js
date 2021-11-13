@@ -15,7 +15,7 @@ const buildNextUntilSelector = (tag) => {
 const childElRecursion = ({ childEls, isOpen }, topIsOpen) => {
   childEls.forEach((childHtml) => {
     childHtml.classList[topIsOpen ? (isOpen ? "remove" : "add") : "add"](
-      "cje-d-none"
+      "cjeh-d-none"
     );
     if (childHtml.dataset.cjeId) {
       childElRecursion(headerIdMap[childHtml.dataset.cjeId], topIsOpen);
@@ -50,13 +50,15 @@ const collectChildElements = (el, selector) => {
 };
 
 const injectCollapsibleHeaders = (app, html, data, renderHeadersCollapsed) => {
-  const headers = html.find(".editor").find("h1,h2,h3,h4,h5,h6");
+  const editor = html.find(".editor");
+  let allCollapsed = renderHeadersCollapsed;
+
+  const headers = editor.find("h1,h2,h3,h4,h5,h6");
   headers.each(function (idx, html) {
-    const id = `cje-${idx}`;
+    const id = `cjeh-${idx}`;
     html.dataset.cjeId = id;
-    html.classList.add("cje-collapsible");
+    html.classList.add("cjeh-collapsible");
     const el = $(this);
-    console.log(el.html());
     el.html(
       `<i data-feather='plus-circle'></i><i data-feather='minus-circle'></i>${el.html()}`
     );
@@ -65,11 +67,26 @@ const injectCollapsibleHeaders = (app, html, data, renderHeadersCollapsed) => {
       buildNextUntilSelector(html.tagName)
     );
     const _handleClick = () => {
-      headerIdMap[id].isOpen = !headerIdMap[id].isOpen;
-      headerIdMap[id].el[0].classList[
-        headerIdMap[id].isOpen ? "remove" : "add"
-      ]("cje-collapsed");
-      childElRecursion(headerIdMap[id], headerIdMap[id].isOpen);
+      const header = headerIdMap[id];
+      header.isOpen = !header.isOpen;
+      header.el[0].classList[header.isOpen ? "remove" : "add"](
+        "cjeh-collapsed"
+      );
+      childElRecursion(header, header.isOpen);
+
+      debugger;
+      if (header.isOpen) {
+        allCollapsed = false;
+      } else {
+        allCollapsed = true;
+        for (const id in headerIdMap) {
+          if (headerIdMap[id].isOpen) {
+            allCollapsed = false;
+            break;
+          }
+        }
+      }
+      editor[allCollapsed ? "addClass" : "removeClass"]("cjeh-all-collapsed");
     };
     headerIdMap[id] = {
       el,
@@ -82,6 +99,34 @@ const injectCollapsibleHeaders = (app, html, data, renderHeadersCollapsed) => {
       _handleClick();
     }
   });
+
+  const editorExpand = $(`
+    <a class="editor-expand">
+      <i class="fa fa-expand-alt" aria-hidden="true"></i>
+    </a>`);
+  const editorCompress = $(`
+    <a class="editor-compress">
+      <i class="fa fa-compress-alt" aria-hidden="true"></i>
+    </a>`);
+  editor.append(editorExpand, editorCompress);
+  if (allCollapsed) {
+    editor.addClass("cjeh-all-collapsed");
+  }
+  const toggleAll = (collapse) => {
+    for (const id in headerIdMap) {
+      const header = headerIdMap[id];
+      if (header.isOpen === collapse) {
+        header._handleClick();
+      }
+    }
+  };
+  editorExpand.on("click", () => {
+    toggleAll(false);
+  });
+  editorCompress.on("click", () => {
+    toggleAll(true);
+  });
+
   feather.replace();
 };
 
@@ -89,7 +134,7 @@ Hooks.on("init", () => {
   let renderJournalSheetHookId = null;
 
   game.settings.register(
-    "collapsible-journal-entries",
+    "foundry-vtt-collapsible-journal-entry-headers",
     "enableCollapsbibleHeaders",
     {
       name: "Enable Collapsible Headers",
@@ -119,7 +164,7 @@ Hooks.on("init", () => {
   );
 
   game.settings.register(
-    "collapsible-journal-entries",
+    "foundry-vtt-collapsible-journal-entry-headers",
     "renderHeadersCollapsed",
     {
       name: "renderHeadersCollapsed",
@@ -138,7 +183,7 @@ Hooks.on("init", () => {
 
   if (
     game.settings.get(
-      "collapsible-journal-entries",
+      "foundry-vtt-collapsible-journal-entry-headers",
       "enableCollapsbibleHeaders"
     )
   ) {
@@ -150,7 +195,7 @@ Hooks.on("init", () => {
           html,
           data,
           game.settings.get(
-            "collapsible-journal-entries",
+            "foundry-vtt-collapsible-journal-entry-headers",
             "renderHeadersCollapsed"
           )
         );

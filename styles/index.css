@@ -1,51 +1,71 @@
-.cje-collapsible {
+.cjeh-collapsible {
   cursor: pointer;
   display: flex;
   align-items: center;
 }
 
-.cje-collapsible.cje-d-none,
-.cje-d-none {
+.cjeh-collapsible.cjeh-d-none,
+.cjeh-d-none {
   display: none;
 }
 
-.cje-collapsible:hover {
+.cjeh-collapsible:hover {
   color: #782e22;
 }
 
-.cje-collapsible .feather {
+.cjeh-collapsible .feather {
   vertical-align: middle;
   margin-right: 0.5rem;
 }
 
-h1.cje-collapsible .feather {
+h1.cjeh-collapsible .feather {
   width: 20px;
   height: 20px;
 }
-h2.cje-collapsible .feather {
+h2.cjeh-collapsible .feather {
   width: 18px;
   height: 18px;
 }
-h3.cje-collapsible .feather {
+h3.cjeh-collapsible .feather {
   width: 16px;
   height: 16px;
 }
-h4.cje-collapsible .feather {
+h4.cjeh-collapsible .feather {
   width: 14px;
   height: 20px;
 }
-h5.cje-collapsible .feather {
+h5.cjeh-collapsible .feather {
   width: 12px;
   height: 12px;
 }
-h6.cje-collapsible .feather {
+h6.cjeh-collapsible .feather {
   width: 10px;
   height: 10px;
 }
 
-.cje-collapsible:not(.cje-collapsed) .feather-plus-circle {
+.cjeh-collapsible:not(.cjeh-collapsed) .feather-plus-circle {
   display: none;
 }
-.cje-collapsible.cje-collapsed .feather-minus-circle {
+.cjeh-collapsible.cjeh-collapsed .feather-minus-circle {
   display: none;
+}
+
+.editor-expand,
+.editor-compress {
+  display: none;
+  font-size: 1.25em;
+  position: absolute;
+  top: 5px;
+  right: 35px;
+  background: rgba(187, 187, 187, 0.75);
+  border: 1px solid #111;
+  border-radius: 4px;
+  padding: 3px 4px;
+  box-shadow: 0 0 1px #000;
+}
+.editor:hover.cjeh-all-collapsed .editor-expand {
+  display: flex;
+}
+.editor:hover:not(.cjeh-all-collapsed) .editor-compress {
+  display: flex;
 }
