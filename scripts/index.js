@@ -74,7 +74,6 @@ const injectCollapsibleHeaders = (app, html, data, renderHeadersCollapsed) => {
       );
       childElRecursion(header, header.isOpen);
 
-      debugger;
       if (header.isOpen) {
         allCollapsed = false;
       } else {
