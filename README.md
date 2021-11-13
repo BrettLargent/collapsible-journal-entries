@@ -13,3 +13,11 @@ While this module is enabled, any heading tag becomes clickable. Doing so will c
 The module has two settings able to be set on a user-by-user basis. These can be found under `Configure Settings` &rarr; `Module Settings`. The **Enable Collapsible Headers** setting determines whether the module at large is enabled. The **Render Headers Collapsed** setting determines whether all headers will render collapsed when you first open a journal entry.
 
 ![collapsible journal entry headers settings](./images/collapsible-journal-entry-headers-settings.png)
+
+---
+
+## Dependencies
+
+- Foundry VTT Feather Icons
+  - manifest: https://raw.githubusercontent.com/BrettLargent/foundry-vtt-feather-icons/main/module.json
+  - url: https://github.com/BrettLargent/foundry-vtt-feather-icons
