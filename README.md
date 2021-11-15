@@ -19,5 +19,5 @@ The module has two settings able to be set on a user-by-user basis. These can be
 ## Dependencies
 
 - Foundry VTT Feather Icons
-  - manifest: https://raw.githubusercontent.com/BrettLargent/foundry-vtt-feather-icons/main/module.json
-  - url: https://github.com/BrettLargent/foundry-vtt-feather-icons
+  - manifest: https://raw.githubusercontent.com/Erebus-FoundryVTT-Modules/foundry-vtt-feather-icons/main/module.json
+  - url: https://github.com/Erebus-FoundryVTT-Modules/foundry-vtt-feather-icons

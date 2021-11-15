@@ -9,12 +9,12 @@
   "dependencies": [
     {
       "name": "foundry-vtt-feather-icons",
-      "manifest": "https://raw.githubusercontent.com/BrettLargent/foundry-vtt-feather-icons/main/module.json"
+      "manifest": "https://raw.githubusercontent.com/Erebus-FoundryVTT-Modules/foundry-vtt-feather-icons/main/module.json"
     }
   ],
   "scripts": ["./scripts/index.js"],
   "styles": ["./styles/index.css"],
-  "url": "https://github.com/BrettLargent/foundry-vtt-collapsible-journal-entry-headers",
-  "manifest": "https://raw.githubusercontent.com/BrettLargent/foundry-vtt-collapsible-journal-entry-headers/main/module.json",
-  "download": "https://github.com/BrettLargent/foundry-vtt-collapsible-journal-entry-headers/archive/refs/heads/main.zip"
+  "url": "https://github.com/Erebus-FoundryVTT-Modules/foundry-vtt-collapsible-journal-entry-headers",
+  "manifest": "https://raw.githubusercontent.com/Erebus-FoundryVTT-Modules/foundry-vtt-collapsible-journal-entry-headers/main/module.json",
+  "download": "https://github.com/Erebus-FoundryVTT-Modules/foundry-vtt-collapsible-journal-entry-headers/archive/refs/heads/main.zip"
 }
