@@ -2,7 +2,7 @@
   "name": "foundry-vtt-collapsible-journal-entry-headers",
   "title": "Foundry VTT Collapsible Journal Entry Headers",
   "description": "Makes journal entry headers collapsible.",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "blargent",
   "minimumCoreVersion": "0.7.5",
   "compatibleCoreVersion": "9.245",
